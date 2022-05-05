@@ -1,0 +1,239 @@
+<div style="padding: 400px; padding-top: 40px; padding-bottom: 10px">
+  <nz-steps [nzCurrent]="current">
+    <nz-step nzTitle=""></nz-step>
+    <nz-step nzTitle=""></nz-step>
+    <nz-step nzTitle=""></nz-step>
+  </nz-steps>
+</div>
+
+<div class="steps-content" *ngIf="current == 0">
+  <div style="padding-right: 130px">
+    <span style="padding-right: 20px">Type of offer : </span>
+
+    <nz-radio-group [(ngModel)]="radioValue">
+      <label nz-radio nzValue="A">Sale</label>
+      <label nz-radio nzValue="B">Rent</label>
+      <label nz-radio nzValue="C">New real state</label>
+      <label nz-radio nzValue="D">Vacation real state</label>
+    </nz-radio-group>
+  </div>
+
+  <br />
+  <div style="padding-right: 310px">
+    <span style="padding-right: 20px">Category : </span>
+    <nz-select nzAllowClear nzPlaceHolder="Select category">
+      <nz-option nzLabel="house" nzValue="house"></nz-option>
+      <nz-option nzLabel="apartment" nzValue="apartment"></nz-option>
+      <nz-option nzLabel="studio" nzValue="studio"></nz-option>
+      <nz-option nzLabel="office" nzValue="office"></nz-option>
+    </nz-select>
+  </div>
+
+  <br />
+  <div style="padding-right: 190px">
+    <span style="padding-right: 20px">Standing : </span>
+    <nz-radio-group [(ngModel)]="value">
+      <label nz-radio nzValue="A">High level</label>
+      <label nz-radio nzValue="B">Good level</label>
+      <label nz-radio nzValue="C">normal level</label>
+    </nz-radio-group>
+  </div>
+  <br />
+  <div style="padding-right: 20px">
+    <span style="padding-right: 20px"> Region : </span>
+    <nz-select [(ngModel)]="selectedProvince" nzPlaceHolder="Select the Region">
+      <nz-option
+        *ngFor="let p of provinceData"
+        [nzValue]="p"
+        [nzLabel]="p"
+      ></nz-option>
+    </nz-select>
+    <span style="padding-right: 20px"> City : </span>
+    <nz-select [disabled]="true" [(ngModel)]="selectedCity" nzPlaceHolder="Select the city">
+      <nz-option
+        *ngFor="let c of cityData[selectedProvince]"
+        [nzValue]="c"
+        [nzLabel]="c"
+      ></nz-option>
+    </nz-select>
+  </div>
+</div>
+
+<div class="steps-content" *ngIf="current == 1">
+  <div fxLayout="row" fxLayoutAlign="center ">
+    <div style="padding-right: 20px">
+      <span>Surface :</span>
+      <br />
+      <nz-input-group id="phoneNumber" [nzAddOnAfter]="addOnAfterTemplate">
+        <input type="number" nz-input />
+
+        <ng-template #addOnAfterTemplate> m² </ng-template>
+      </nz-input-group>
+    </div>
+
+    <div style="padding-right: 20px">
+      <span>Price :</span>
+      <br />
+      <nz-input-group id="phoneNumber" [nzAddOnAfter]="OnAfterTemplate">
+        <input type="number" nz-input />
+
+        <ng-template #OnAfterTemplate> DNT </ng-template>
+      </nz-input-group>
+    </div>
+    <div>
+      <span>Floors : </span>
+      <br />
+      <nz-select
+        style="width: 150px"
+        nzAllowClear
+        nzPlaceHolder="Floors number"
+      >
+        <nz-option nzLabel="1" nzValue="1"></nz-option>
+        <nz-option nzLabel="2" nzValue="2"></nz-option>
+        <nz-option nzLabel="3" nzValue="3"></nz-option>
+        <nz-option nzLabel="4" nzValue="4"></nz-option>
+        <nz-option nzLabel="5" nzValue="5"></nz-option>
+        <nz-option nzLabel="6" nzValue="6"></nz-option>
+        <nz-option nzLabel="7" nzValue="7"></nz-option>
+        <nz-option nzLabel="8" nzValue="8"></nz-option>
+        <nz-option nzLabel="9" nzValue="9"></nz-option>
+        <nz-option nzLabel="10" nzValue="10"></nz-option>
+      </nz-select>
+    </div>
+  </div>
+  <br />
+
+  <div fxLayout="row" fxLayoutAlign="center ">
+    <div class="box">
+      <span style="padding-right: 10px">Rooms : </span>
+
+      <div class="dec" (click)="dec()">-</div>
+      <span style="width: 20px">{{ num }}</span>
+      <div class="inc" (click)="inc()">+</div>
+    </div>
+    <div class="box">
+      <span style="padding-right: 10px; padding-left: 20px">Bedrooms : </span>
+
+      <div class="dec" (click)="decc()">-</div>
+      <span style="width: 20px">{{ bed }}</span>
+      <div class="inc" (click)="incc()">+</div>
+    </div>
+    <div class="box">
+      <span style="padding-right: 10px; padding-left: 20px">Bathrooms : </span>
+
+      <div class="dec" (click)="deccc()">-</div>
+      <span style="width: 20px">{{ bath }}</span>
+      <div class="inc" (click)="inccc()">+</div>
+    </div>
+  </div>
+  <br />
+  <span style="padding-right: 20px">Features:</span>
+  <nz-checkbox-wrapper (nzOnChange)="log($event)">
+    <div fxLayout="row" fxLayoutAlign="center none">
+      <div
+        fxLayout="column"
+        fxLayoutAlign="center none"
+        style="display: inline-block"
+      >
+        <label nz-checkbox style="padding-left: 8px">Furnished</label>
+        <label nz-checkbox>Garden</label>
+        <label nz-checkbox>Terraces</label>
+        <label nz-checkbox>Air conditioning</label>
+        <label nz-checkbox>Internet access</label>
+        <label nz-checkbox>Alarm system</label>
+      </div>
+      <div
+        fxLayout="column"
+        fxLayoutAlign="center none"
+        style="padding: 20px; display: inline-block"
+      >
+        <label nz-checkbox style="padding-left: 8px">Sea view</label>
+        <label nz-checkbox>Garage</label>
+        <label nz-checkbox>Lift</label>
+        <label nz-checkbox>Chimney</label>
+        <label nz-checkbox>Electric heating</label>
+        <label nz-checkbox>Intercom</label>
+      </div>
+    </div>
+  </nz-checkbox-wrapper>
+</div>
+<div class="steps-content" *ngIf="current == 2">
+  <div style="padding-left: 100px; padding-right: 100px">
+    <nz-divider
+      nzPlain
+      nzText="Upload photos :"
+      nzOrientation="left"
+    ></nz-divider>
+    <div class="clearfix" style="text-align: start">
+      <nz-upload
+        nzAction="https://www.mocky.io/v2/5cc8019d300000980a055e76"
+        nzListType="picture-card"
+        [(nzFileList)]="fileList"
+        [nzShowButton]="fileList.length < 8"
+        [nzPreview]="handlePreview"
+      >
+        <div>
+          <i nz-icon nzType="plus"></i>
+          <div style="margin-top: 8px">Upload</div>
+        </div>
+      </nz-upload>
+      <nz-modal
+        [nzVisible]="previewVisible"
+        [nzContent]="modalContent"
+        [nzFooter]="null"
+        (nzOnCancel)="previewVisible = false"
+      >
+        <ng-template #modalContent>
+          <img [src]="previewImage" [ngStyle]="{ width: '100%' }" />
+        </ng-template>
+      </nz-modal>
+    </div>
+    <nz-divider
+      nzPlain
+      nzText="Announce informations :"
+      nzOrientation="left"
+    ></nz-divider>
+    <div style="text-align: start">
+      <form nz-form [formGroup]="form" nzLayout="vertical">
+        <nz-form-item>
+          <nz-form-control>
+            <span>Title :</span> <br />
+            <nz-textarea-count [nzMaxCharacterCount]="100">
+              <textarea
+                style="width: 500px"
+                rows="1"
+                formControlName="comment"
+                nz-input
+              ></textarea>
+            </nz-textarea-count>
+            <br />
+            <br />
+            <span>Description :</span> <br />
+            <nz-textarea-count [nzMaxCharacterCount]="100">
+              <textarea
+                style="width: 700px"
+                rows="4"
+                formControlName="comment"
+                nz-input
+              ></textarea>
+            </nz-textarea-count>
+          </nz-form-control>
+        </nz-form-item>
+      </form>
+
+      <nz-divider nzPlain></nz-divider>
+    </div>
+  </div>
+</div>
+
+<div class="steps-action">
+  <button nz-button nzType="default" (click)="pre()" *ngIf="current > 0">
+    <span>Previous</span>
+  </button>
+  <button nz-button nzType="default" (click)="next()" *ngIf="current < 2">
+    <span>Next</span>
+  </button>
+  <button nz-button nzType="primary" (click)="done()" *ngIf="current === 2">
+    <span>Done</span>
+  </button>
+</div>

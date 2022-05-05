@@ -1,0 +1,25 @@
+.container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  align-items: start;
+  overflow: auto;
+}
+
+.heart{
+ color: #ccc;
+ cursor: pointer;
+ font-size: 50px;
+}
+.highlighted{
+  color: deeppink;
+
+}
+.liked {
+  font-weight: bold;
+  color: red;
+
+}
+.image {
+  float: left;
+  margin: 0 10px 10px 0;
+}

@@ -1,0 +1,28 @@
+.container
+{
+  margin-top: 100px;
+}
+.image {
+  float: left;
+  margin: 0 10px 10px 0;
+}
+h2{
+  padding-top: 50px;
+}
+[nz-carousel-content] {
+  text-align: center;
+  height: 160px;
+  width: 160px;
+  line-height: 160px;
+  color: #fff;
+  overflow: hidden;
+}
+
+h3 {
+  color: #fff;
+  margin-bottom: 0;
+  user-select: none;
+}
+
+
+

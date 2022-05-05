@@ -1,0 +1,33 @@
+<div class="back">
+<h2 style="padding:20px  ;text-align:center;">Favorites list :</h2>
+
+
+
+  <div *ngFor="let item of cards">
+    <div  fxLayout="column" fxLayoutAlign="start  " style="padding:20px  ;padding-left: 100px;" >
+      <nz-card   style="width: 500px;display: flex;" [nzCover]="coverTemplate">
+        <!-- <nz-card-meta nzTitle="Europe Street beat" nzDescription="www.instagram.com"></nz-card-meta> -->
+
+        <strong>Title : </strong>
+        <p>{{ item?.title }}</p>
+        <strong>details : </strong>
+        <p>{{ item?.price }}</p>
+      </nz-card>
+
+      <ng-template  #coverTemplate>
+        <div style="padding: 20px;">
+        <button style="border: 0ch;background-color:rgb(255, 255, 255); ">
+        <img  (click)="buttonClicked(item.id)" nzHoverable
+          alt="example"
+          [src]="item?.photo"
+          style="height: 200px;width: 200px; position: relative; object-fit: cover;"
+        />
+      </button>
+    </div>
+      </ng-template>
+
+    </div>
+  </div>
+  </div>
+
+

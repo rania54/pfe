@@ -1,0 +1,77 @@
+.steps-content {
+  margin-top: 16px;
+
+  min-height: 200px;
+  text-align:center;
+  padding-top: 80px;
+}
+
+input {
+  width: 100px;
+
+}
+
+.steps-action {
+  margin-top: 24px;
+  margin-left: 1100px; padding-top: 40px;padding-bottom: 10px;
+}
+
+button {
+  margin-right: 8px;
+}
+nz-select {
+  width: 200px;
+  margin-right: 8px;
+}
+
+#phoneNumber{
+  width: 150px;
+}
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+input[type=number] {
+  -moz-appearance: textfield;
+}
+.box{
+  display: flex;
+  align-items: center;
+  justify-content: center ;
+}
+.box .dec{
+  width: 20px;
+  height: 20px;
+  border: 1px solid #c6c6c6;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center ;
+  font-size:  22px; ;
+  cursor: pointer;
+}
+
+.box .inc{
+  width: 20px;
+  height: 20px;
+  border: 1px solid #c6c6c6;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center ;
+  font-size:  22px; ;
+  cursor: pointer;
+}
+.box .inc:active{
+background: #ccc;
+}
+.box .dec:active{
+  background: #ccc;
+  }
+
+.box input{
+  width: 60px;
+  border: 1px solid #c6c6c6;
+  border-radius: 5px;
+  font-size:  22px; ;
+  margin: 0 10px;
+}

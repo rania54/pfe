@@ -1,0 +1,86 @@
+
+
+  <div style="padding-top: 50px;padding-left: 200px ;">
+    <h2>New S2 for rent in kantaoui:</h2> <br />
+    <h5 style="color:brown;">140.000 DNT</h5>
+  </div>
+  
+    <div class="row" >
+     <!-- <h1 style="padding-bottom: 20px;">Appartement à louer</h1>-->
+
+      <div class="col-md-7" style="padding-left: 200px;">
+
+        <nz-carousel nzAutoPlay style="height: 400px;width: 600px;">
+          <div nz-carousel-content *ngFor="let item of array">
+            <img
+
+        [src]="item?.photo"
+        style="height: 400px;width: 600px; position: relative; object-fit: cover;"
+      />
+          </div>
+
+        </nz-carousel>
+       <!-- <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <img src="/assets/images/im1.jpg" style="height: 400px;width: 600px;  object-fit: cover;" class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item">
+              <img src="/assets/images/im2.jpg" style="height: 400px;width: 600px; object-fit: cover;" class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item">
+              <img src="/assets/images/im3.jpg" style="height: 400px;width: 600px;  object-fit: cover;" class="d-block w-100" alt="...">
+            </div>
+          </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div> -->
+      </div>
+
+
+
+      <div class="col-md-5" style="padding-left: 20px;"  >
+        <div style="font-size: 13px;line-height:30px; padding-bottom:40px ;">
+        <img class="image" src="/assets/images/avatar.png"  style=" height: 30px;width: 30px;  object-fit: cover;border-radius: 50%;">
+          <p> Account's name</p>
+         </div>
+
+
+
+         
+          <div *ngFor="let item of array1">
+          <HR ALIGN=CENTER WIDTH="300">
+            <div style="padding-bottom:2px ;padding-top: 2px;">
+              
+              <p style="line-height:50px;">{{ item?.text }}</p>
+            </div>
+      </div>
+      </div>
+
+    </div>
+    <div style="padding: 10px;padding-left: 200px;">
+      <h2>Detailed description</h2>
+      <p>..............................................................................................................................................................................................................</p>
+      <p>..............................................................................................................................................................................................................</p>
+      <p>..............................................................................................................................................................................................................</p>
+      <p>..............................................................................................................................................................................................................</p>
+      <p>..............................................................................................................................................................................................................</p>
+      <p>..............................................................................................................................................................................................................</p>
+      </div>
+
+
+
+
+
+
+
+
+
+
+

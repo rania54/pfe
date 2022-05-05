@@ -1,0 +1,62 @@
+<div class="back">
+  <div fxLayoutAlign="end" style="padding: 10px 250px">
+    <ul class="back" nz-menu nzMode="horizontal" style="color: darkslategray">
+      <li nz-menu-item routerLink="home">
+        <strong>All</strong>
+      </li>
+      <nz-divider nzType="vertical"></nz-divider>
+      <li nz-menu-item><strong>Sale</strong></li>
+      <nz-divider nzType="vertical"></nz-divider>
+      <li nz-menu-item><strong>Rent</strong></li>
+      <nz-divider nzType="vertical"></nz-divider>
+      <li nz-menu-item>
+        <strong>New real estate</strong>
+      </li>
+      <nz-divider nzType="vertical"></nz-divider>
+      <li nz-menu-item>
+        <strong>Holiday renting</strong>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<div class="back">
+  <div *ngFor="let item of cards">
+    <div
+      fxLayout="column"
+      fxLayoutAlign="center end"
+      style="padding: 10px 300px"
+    >
+      <nz-card
+        nzHoverable
+        style="width: 500px; display: flex"
+        [nzCover]="coverTemplate"
+      >
+        <div style="padding-left: 200px">
+          <app-likebutton></app-likebutton>
+        </div>
+        <div (click)="buttonClicked(item.id)">
+          <strong>Title : </strong>
+          <p>{{ item?.title }}</p>
+          <strong>details : </strong>
+          <p>{{ item?.detail }}</p>
+        </div>
+      </nz-card>
+      <ng-template #coverTemplate>
+        <div style="padding: 20px">
+          <img
+            (click)="buttonClicked(item.id)"
+            alt="example"
+            [src]="item?.photo"
+            style="
+              height: 200px;
+              width: 200px;
+              position: relative;
+              object-fit: cover;
+            "
+          />
+        </div>
+      </ng-template>
+    </div>
+  </div>
+</div>

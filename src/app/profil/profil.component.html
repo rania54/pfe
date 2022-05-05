@@ -1,0 +1,148 @@
+<!--<div class="back">
+
+  <h1>User's profile</h1>
+
+  <div class="profile-pic-div">
+    <img [src]="url" id="photo" />
+    <input type="file" (change)="onselectFile($event)" id="file" />
+    <label for="file" id="uploadBtn">Choose Photo</label>
+  </div>
+
+
+
+  <form nz-form style="padding-bottom: 10px">
+    <nz-form-item>
+      <nz-form-label [nzSpan]="9" nzFor="Username">Username</nz-form-label>
+      <nz-form-control [nzSpan]="7">
+        <input nz-input name="Username" type="text" id="Username" />
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-label [nzSpan]="9" nzFor="email">E-mail</nz-form-label>
+      <nz-form-control [nzSpan]="7">
+        <input nz-input name="email" type="email" id="email" />
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-label [nzSpan]="9" nzFor="Phone number"
+        >Phone number</nz-form-label
+      >
+      <nz-form-control [nzSpan]="7">
+        <nz-input-group [nzAddOnBefore]="addOnBeforeTemplate">
+          <ng-template #addOnBeforeTemplate> +216 </ng-template>
+          <input nz-input group name="Phone number" id="Phone number" />
+        </nz-input-group>
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-label [nzSpan]="9" nzFor="Password">Password</nz-form-label>
+      <nz-form-control [nzSpan]="7">
+        <input nz-input name="Password" formControlName="password" type="Password" id="Password" />
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-label [nzSpan]="9" nzFor="Confirm Password"
+        >Confirm Password</nz-form-label
+      >
+      <nz-form-control [nzSpan]="7">
+        <input
+          nz-input
+          name="Confirm Password"
+          type="Password"
+          id="Confirm Password"
+        />
+      </nz-form-control>
+    </nz-form-item>
+  </form>
+  <button style="margin: 20px 600px" nz-button nzType="primary">Update</button>
+</div>-->
+<h3 style="text-align: center;padding-top: 10px;">User's profile</h3>
+<form  nz-form [formGroup]="validateForm" (ngSubmit)="submitForm()">
+  <nz-form-item >
+  <div class="profile-pic-div">
+    <img [src]="url" id="photo" />
+    <input type="file" (change)="onselectFile($event)" id="file" />
+    <label for="file" id="uploadBtn">Choose Photo</label>
+  </div>
+</nz-form-item>
+<h5>Modify my access data :</h5>
+  <nz-form-item>
+    <nz-form-label
+      [nzSm]="9"
+      [nzXs]="24"
+      nzFor="nickname"
+      nzRequired
+      nzTooltipTitle="What do you want other to call you"
+    >
+      <span>userName</span>
+    </nz-form-label>
+    <nz-form-control [nzSpan]="7" nzErrorTip="Please input your nickname!">
+      <input nz-input id="userName" formControlName="userName" nz-input [ngModel]="'name'"  />
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-label [nzSm]="9" [nzXs]="24" nzRequired nzFor="email">E-mail</nz-form-label>
+    <nz-form-control [nzSpan]="7" nzErrorTip="The input is not valid E-mail!">
+      <input nz-input formControlName="email" id="email" [ngModel]="'email'"/>
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-label [nzSm]="9" [nzXs]="24" nzFor="password" nzRequired>Password</nz-form-label>
+    <nz-form-control [nzSpan]="7" nzErrorTip="Please input your password!">
+      <input
+        nz-input
+        type="password"
+        id="password"
+        formControlName="password"
+        (ngModelChange)="updateConfirmValidator()"
+        [ngModel]="'password'"
+      />
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-label [nzSm]="9" [nzXs]="24" nzFor="checkPassword" nzRequired>Confirm Password</nz-form-label>
+    <nz-form-control [nzSpan]="7" [nzErrorTip]="errorTpl">
+      <input nz-input type="password" formControlName="checkPassword" id="checkPassword" [ngModel]="'password'"/>
+      <ng-template #errorTpl let-control>
+        <ng-container *ngIf="control.hasError('required')">Please confirm your password!</ng-container>
+        <ng-container *ngIf="control.hasError('confirm')">
+          Two passwords that you enter is inconsistent!
+        </ng-container>
+      </ng-template>
+    </nz-form-control>
+  </nz-form-item>
+
+  <nz-form-item>
+    <nz-form-label [nzSm]="9" [nzXs]="24" nzFor="phoneNumber" nzRequired>Phone Number</nz-form-label>
+    <nz-form-control
+    [nzSpan]="7"
+      [nzValidateStatus]="validateForm.controls['phoneNumber']"
+      nzErrorTip="Please input your phone number!"
+    >
+      <nz-input-group [nzAddOnBefore]="addOnBeforeTemplate">
+
+
+           <ng-template #addOnBeforeTemplate> +216 </ng-template>
+
+
+        <input type="number" formControlName="phoneNumber" id="'phoneNumber'" nz-input [ngModel]="'00000000'"/>
+      </nz-input-group>
+    </nz-form-control>
+  </nz-form-item>
+
+
+  <nz-form-item nz-row class="register-area" >
+    <nz-form-control [nzSpan]="7" >
+      <button style="margin-left: 550px;" nz-button nzType="primary">Update</button>
+    </nz-form-control>
+  </nz-form-item>
+</form>
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,101 @@
+<nz-header class="topnav">
+  <ul nz-menu nzMode="horizontal">
+    <div fxLayoutAlign="space-evenly center">
+      <li>
+        <button style="border: 0ch" class="logo" routerLink="home"></button>
+      </li>
+      <li nz-menu-item>
+        <nz-input-group [nzSuffix]="suffixIconSearch">
+          <input type="text" nz-input placeholder="input search text" />
+        </nz-input-group>
+        <ng-template #suffixIconSearch>
+          <i nz-icon nzType="search"></i>
+        </ng-template>
+      </li>
+      <li
+        nz-menu-item
+        nz-dropdown
+        [nzDropdownMenu]="menu"
+        style="color: #c0c0c0"
+      >
+        <strong>categories </strong><i nz-icon nzType="down"></i>
+      </li>
+      <nz-dropdown-menu #menu="nzDropdownMenu">
+        <ul nz-menu nzSelectable>
+          <div *ngFor="let item of array">
+            <li nz-menu-item>{{ item?.text }}</li>
+          </div>
+        </ul>
+      </nz-dropdown-menu>
+      <li>
+        <button
+          routerLink="LogIn"
+          nz-button
+          style="color: #c0c0c0; border: 0ch"
+        >
+          <li><strong> Login </strong></li>
+        </button>
+      </li>
+      <li>
+        <button routerLink="profil" nz-button nzType="primary" nzShape="circle">
+          <i nz-icon nzType="user" nzTheme="outline"></i>
+        </button>
+        <nz-divider nzType="vertical"></nz-divider>
+        <button
+          routerLink="favoris"
+          nz-button
+          nzType="primary"
+          nzShape="circle"
+        >
+          <i nz-icon nzType="heart" nzTheme="outline"></i>
+        </button>
+        <nz-divider nzType="vertical"></nz-divider>
+        <button
+          (click)="gotopagemessages()"
+          nz-button
+          nzType="primary"
+          nzShape="circle"
+        >
+          <i nz-icon nzType="message" nzTheme="outline"></i>
+        </button>
+      </li>
+      <li>
+        <button
+          nz-button
+          nzShape="round"
+          nzType="primary"
+          (click)="showModal()"
+        >
+          <li><span class="textMenu"> Add an announcement </span></li>
+        </button>
+        <nz-modal
+          [(nzVisible)]="isVisible"
+          [nzContent]="modalContent"
+          [nzFooter]="modalFooter"
+          (nzOnCancel)="handleCancel()"
+        >
+          <ng-template #modalContent>
+            <p>
+              To post an announcement for free, You must be registered on the
+              site.
+            </p>
+          </ng-template>
+
+          <ng-template #modalFooter>
+            <button
+              nz-button
+              nzType="default"
+              (click)="navigator('registration')"
+            >
+              inscription
+            </button>
+            <button nz-button nzType="primary" (click)="navigator('LogIn')">
+              Log in
+            </button>
+          </ng-template>
+        </nz-modal>
+      </li>
+    </div>
+  </ul>
+</nz-header>
+<br />
